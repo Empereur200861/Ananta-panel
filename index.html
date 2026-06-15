@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ananta Hosting</title>
+
+<style>
+body {
+  background: black;
+  color: #00ffcc;
+  text-align: center;
+  font-family: monospace;
+}
+
+h1 {
+  text-shadow: 0 0 20px #00ffcc;
+}
+
+button {
+  padding: 10px;
+  margin: 10px;
+  background: #00ffcc;
+  border: none;
+  cursor: pointer;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>⚡ ANANTA HOSTING ⚡</h1>
+<p>Created by Murphy 😈</p>
+
+<input id="number" placeholder="Numéro WhatsApp"><br>
+
+<button onclick="start()">🚀 Déployer Bot</button>
+
+<h2 id="code"></h2>
+
+<script>
+const API = "https://ananta-api-ttvk.onrender.com";
+
+async function start() {
+  let res = await fetch(API + "/start", {
+    method: "POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify({ number: number.value })
+  });
+
+  let data = await res.json();
+  document.getElementById("code").innerText = data.code;
+}
+</script>
+
+</body>
+</html>
